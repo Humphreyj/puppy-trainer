@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Potty Trainer</title>
+	<link rel="stylesheet" type='text/css' href="potty.css"/>
+	<script src="https://kit.fontawesome.com/fd3e5e9687.js"></script><!--font awesome-->
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"><!--bootstrap-->
+
+</head>
+<body>
+	<div class="header">
+		<h1 class="title">Puppy Trainer</h1>
+		<button class="menu-bone"><i class="fas fa-bone"></i></button>
+	</div><!--header-->
+
+	<div class="main">
+		<h1 class="pet-name" id="petName">Dot</h1>
+		<h4 class="time-left" id="countdown"></h4>
+
+		<div class="buttons">
+			<div class="btn btn-primary" id='fed'>Fed</div>
+			<div class="btn btn-success" id='success'>Success</div>
+			<div class="btn btn-danger" id='accident'>Accident</div>
+		</div><!--buttons-->
+
+		<div class="log">
+			<h3 class="training-log">Training Log</h3>
+			<div class="log" id="log">
+
+			</div>
+		</div>
+	</div><!--main-->
+	
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>	
+<script type='text/javascript' src='potty.js'></script>	
+</body>
+</html>
