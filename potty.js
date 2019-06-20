@@ -10,6 +10,11 @@
 //VARIABLES
  let petName = 'Dot',
  	 history = [],//where the log data is stored.
+ 	 //finding average pottyTimes
+ 	 outsideArr = [],
+ 	 difference,
+ 	 avg,
+ 	 //finding average pottyTimes
  	 startTime = 0,
  	 markedTime = 0,
  	 timeLeft = 0,
@@ -68,47 +73,58 @@ function getDate()  {
 
 //LOG FED FUNCTION
 	function logFed() {
-		logDate(` ${month},${day},${year} ${petName} was fed at ${hour}:${minutes}:${sec} ${amPm}`);
+		logDate(` ${month}-${day}-${year} ${petName} was fed at ${hour}:${minutes}:${sec} ${amPm}`);
 		if(startTime === 0) {
-			countdown.innerText = `Gathering ${petName}'s data...`;
+			timeLeft = 900;
 			startTime = now;
-		}
-		
-		
-	 	console.log(startTime);
+		} 
+		timer(timeLeft);
+ console.log(startTime);
 	}
 //LOG FED FUNCTION
 
 //LOG Success FUNCTION
 	function logSuccess() {
-		logDate(`${month},${day},${year} ${petName} was successful at ${hour}:${minutes}:${sec} ${amPm}`);
+		logDate(`${month}-${day}-${year} ${petName} was successful at ${hour}:${minutes}:${sec} ${amPm}`);
 		markedTime = now;
 		updateTimeLeft();
+		timer(timeLeft);
 	}
 //LOG Success FUNCTION
 
 //LOG Accident FUNCTION
 	function logAccident() {
-		logDate(`${month},${day},${year} ${petName} had an accident at ${hour}:${minutes}:${sec} ${amPm}`);
+		logDate(`${month}-${day}-${year} ${petName} had an accident at ${hour}:${minutes}:${sec} ${amPm}`);
 		markedTime = now;
 		updateTimeLeft();
+		timer(timeLeft);
 	}
 
+	//average potty time function
+
+function getPottyTime(arr) {
+ let total = 0;
+ for(let i = 0; i < arr.length;i++) {
+ 	total += outsideArr[i];
+ }
+ avg = total/arr.length;
+ console.log(Math.floor(avg))
+ return avg;
+}
+//average potty time function
+
+	
 	function updateTimeLeft() {
-		timeLeft = markedTime - startTime;
-
 		if(startTime === 0) {
+			timeLeft = 900;
 			startTime = now;
-			countdown.innerText = `Gathering ${petName}'s data...`;
-		}else if(timeLeft > 0) {
-			startTime = now;
-			//resets start time if a timer is already running. 
+		}else {
+			timeLeft = markedTime - startTime;
 		}
-
-		
-
-		console.log(startTime);
-		timer(timeLeft);
+		outsideArr.push(timeLeft);
+		getPottyTime(outsideArr);
+		console.log(outsideArr);
+		timer(avg);
 	}
 //LOG Accident FUNCTION
 
@@ -123,32 +139,35 @@ function timer(seconds) {
 	countdownTime = setInterval(() => {
 		let secondsLeft = Math.round((then - Date.now()) /1000);
 
+
 		//check if the timer should stop.
-		if(secondsLeft < .5) {
+		if(secondsLeft < 1) {
 			alarmTone.play();
 			countdown.innerText = `Take ${petName} Outside!`
 		}
 		if(secondsLeft < 0) {
-			clearInterval(countdownTime);
-			return;
+			
 		}
 		//check if the timer should stop.
 
 		//display it
 		displayTimeLeft(secondsLeft);
 	},1000);
+
 }
 
 function displayTimeLeft(seconds) {
+	
 	const minutes1 = Math.floor(seconds / 60);
 	const remainderSeconds = seconds % 60;
+
 	const display = `Take ${petName} out in ${minutes1}:${remainderSeconds < 10 ? '0' : ''}${remainderSeconds}`
-	minutes1 > 1000 ? countdown.innerText = `Gathering ${petName}'s data...` : countdown.innerText = display;;
-	
-
+	minutes1 > 1000 ? countdown.innerText = `Gathering ${petName}'s data...` : countdown.innerText = display;
 	//console.log({minutes1, remainderSeconds});
-
 }
+//Timer function
+
+
 
 //EVENT LISTENERS
 fed.addEventListener('click', logFed);
