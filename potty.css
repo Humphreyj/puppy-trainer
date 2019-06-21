@@ -35,6 +35,7 @@ body {
 
 .pet-name {
     font-size: 8.2rem;
+    font-family: 'Permanent Marker', cursive;
 }
 
 /*Buttons*/
@@ -48,7 +49,7 @@ body {
 
 .btn-div {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     width: 100%;
     margin: 1rem 0 1rem 0;
 }
@@ -62,34 +63,34 @@ body {
 
 #fed {
     background: none;
-    border: .5rem solid blue;
+    border: 1rem solid blue;
 }
 
 #watered {
     background: blue;
-    border: .5rem solid blue;
+    border: 1rem solid blue;
 
 }
 
 #success1 {
     background: none;
-    border: .5rem solid green;
+    border: 1rem solid green;
 }
 
 #success2 {
     background: green;
-    border: .5rem solid green;
+    border: 1rem solid green;
 
 }
 
 #accident1 {
     background: none;
-    border: .5rem solid red;
+    border: 1rem solid red;
 }
 
 #accident2 {
     background: red;
-    border: .5rem solid red;
+    border: 1rem solid red;
 }
 
 
@@ -128,8 +129,14 @@ body {
     justify-content: space-around;
     width: 80%;
     border: 1px solid black;
-    font-size: 5rem;
+    
 
+}
+#succ {
+	font-size: 2.5rem;
+}
+#acc {
+	font-size: 2.5rem;
 }
 
 #succ::before {
