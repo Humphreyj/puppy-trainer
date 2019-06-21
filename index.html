@@ -1,42 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Potty Trainer</title>
-	<link rel="stylesheet" type='text/css' href="potty.css"/>
-	<script src="https://kit.fontawesome.com/fd3e5e9687.js"></script><!--font awesome-->
-
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"><!--bootstrap-->
-
+    <meta charset="UTF-8">
+    <title>Potty Trainer</title>
+    <link rel="stylesheet" type='text/css' href="potty.css" />
+    <script src="https://kit.fontawesome.com/fd3e5e9687.js"></script>
+    <!--font awesome-->
+    <link href="https://fonts.googleapis.com/css?family=Acme|Cabin|Quicksand&display=swap" rel="stylesheet">
+    <!--google fonts-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--bootstrap-->
 </head>
+
 <body>
-	<div class="header">
-		<h1 class="title">Puppy Trainer</h1>
-		<button class="menu-bone"><i class="fas fa-bone"></i></button>
-	</div><!--header-->
-
-	<div class="main">
-		<h1 class="pet-name" id="petName">Dot</h1>
-		<h4 class="time-left" id="countdown"></h4>
-
-		<div class="buttons">
-			<div class="btn btn-primary" id='fed'>Fed</div>
-			<div class="btn btn-success" id='success'>Success</div>
-			<div class="btn btn-danger" id='accident'>Accident</div>
-		</div><!--buttons-->
-
-		<div class="log">
-			<h3 class="training-log">Training Log</h3>
-			<div class="log" id="log">
-
-			</div>
-		</div>
-	</div><!--main-->
-	
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>	
-<script type='text/javascript' src='potty.js'></script>	
+    <div class="header">
+        <h1 class="main-title">Puppy Trainer</h1>
+        <button class="menu-bone"><i class="fas fa-bone fa-4x"></i></button>
+    </div>
+    <!--header-->
+    <div class="main">
+        <h1 class="pet-name" id="petName">Dot</h1>
+        <h4 class="time-left" id="countdown"></h4>
+        <div class="time-buttons btn-div" id='timeButtons'>
+            <button class="btn btn-info add-time" id='addFive'>+5</button>
+            <button class="btn btn-info add-time" id='addTen'>+10</button>
+        </div>
+        <div class="buttons">
+            <h3 class="title">Intake</h3>
+            <div class='fed-buttons btn-div'>
+                <button class="btn btn-primary" id='fed'> </button>
+                <button class="btn btn-primary" id='watered'> </button>
+            </div>
+            <h3 class="title">Success</h3>
+            <div class='success-buttons btn-div'>
+                <button class="btn btn-success" id='success1'> </button>
+                <button class="btn btn-success" id='success2'> </button>
+            </div>
+            <h3 class="title">Accident</h3>
+            <div class='accident-buttons btn-div'>
+                <button class="btn btn-danger" id='accident1'> </button>
+                <button class="btn btn-danger" id='accident2'> </button>
+            </div>
+        </div>
+        <!--buttons-->
+        <div class="succ-acc">
+        	<h3 class="successes" id='succ'>0</h3>
+        	<h3 class="accidents" id='acc'>0</h3>
+        </div>
+        <h3 class="title">Training Log</h3>
+        <div class="log" id="log">
+        </div>
+    </div>
+    <!--main-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script type='text/javascript' src='potty.js'></script>
 </body>
+
 </html>
