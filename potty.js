@@ -33,6 +33,7 @@ let petName = 'Dot',
     day,
     hour,
     minutes,
+    secondsLeft,
     sec,
     now,
     //timer
@@ -148,17 +149,17 @@ function updateTimeLeft() {
 
     if (startTime === 0) {
         startTime = now;
-        timeLeft = 300;
+        timeLeft = 3;
         
     } else {
         timeLeft = markedTime - startTime;
     }
     outsideArr.push(timeLeft);
     getPottyTime(outsideArr);
-    console.log(outsideArr);
     timer(timeLeft);
     startReset();
 }
+    console.log(outsideArr);
 
 function startReset() {
     startTime = markedTime;
@@ -175,7 +176,7 @@ function timer(seconds) {
     displayTimeLeft(seconds);
 
     countdownTime = setInterval(() => {
-        let secondsLeft = Math.round((then - Date.now()) / 1000);
+         secondsLeft = Math.round((then - Date.now()) / 1000);
 
 
         //check if the timer should stop.
@@ -195,7 +196,7 @@ function timer(seconds) {
 
 function displayTimeLeft(seconds) {
 
-    const minutes1 = Math.floor(seconds / 60);
+    minutes1 = Math.floor(seconds / 60);
     const remainderSeconds = seconds % 60;
 
     const display = `Take ${petName} out in ${minutes1}:${remainderSeconds < 10 ? '0' : ''}${remainderSeconds}`;
@@ -205,8 +206,13 @@ function displayTimeLeft(seconds) {
 }
 
 function addFiveMin() {
- avg += 300;
- alert('works')
+ secondsLeft += 300;
+ timer(secondsLeft);
+}
+function addTenMin() {
+ secondsLeft += 600;
+ timer(secondsLeft);
+ 
 }
 //Timer function
 //EVENT LISTENERS
@@ -217,7 +223,7 @@ success2.addEventListener('click', logSuccess);
 accident1.addEventListener('click', logAccident);
 accident2.addEventListener('click', logAccident);
 addFive.addEventListener('click', addFiveMin);
-addTen.addEventListener('click', addTen);
+addTen.addEventListener('click', addTenMin);
 //EVENT LISTENERS
 //Run Zone
 getDate()
