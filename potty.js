@@ -5,6 +5,7 @@ const fed = document.getElementById('fed'),
     success2 = document.getElementById('success2'),
     accident1 = document.getElementById('accident1'),
     accident2 = document.getElementById('accident2'),
+    wokeUp = document.querySelector('.woke-up')
     countdown = document.getElementById('countdown'),
     log = document.getElementById('log'),
     timeButtons = document.getElementById('timeButtons'),
@@ -88,6 +89,16 @@ function logDate(str) {
 }
 //LOG DATE FUNCTION
 
+//LOG Woke FUNCTION
+function logWoke() {
+    logDate(` ${month}-${day}-${year} ${petName} woke up at ${hour}:${minutes}:${sec} ${amPm}`);
+    markedTime = now;
+    updateTimeLeft();
+    timer(avg);
+    
+}
+//LOG Woke FUNCTION
+
 //LOG FED FUNCTION
 function logFed() {
     logDate(` ${month}-${day}-${year} ${petName} was fed at ${hour}:${minutes}:${sec} ${amPm}`);
@@ -149,7 +160,7 @@ function updateTimeLeft() {
 
     if (startTime === 0) {
         startTime = now;
-        timeLeft = 3;
+        timeLeft = 900;
         
     } else {
         timeLeft = markedTime - startTime;
@@ -217,6 +228,7 @@ function addTenMin() {
 //Timer function
 //EVENT LISTENERS
 fed.addEventListener('click', logFed);
+wokeUp.addEventListener('click', logWoke)
 watered.addEventListener('click', logWatered);
 success1.addEventListener('click', logSuccess);
 success2.addEventListener('click', logSuccess);
